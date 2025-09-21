@@ -37,7 +37,7 @@ The project replicates the original 2048 experience, playable directly in the br
 
 ## Live Preview
 
-👉 [View Demo](https://github.com/Diana2369/2048-finished/)
+👉 [View Demo](https://diana2369.github.io/2048-finished/)
 
 ⚠️ Make sure the link is publicly accessible and works in incognito mode.
 
