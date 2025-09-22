@@ -6,14 +6,7 @@ class Game {
     this.score = 0;
     this.status = 'idle';
 
-    this.board = initialState
-      ? this.cloneBoard(initialState)
-      : this.createEmptyBoard();
-
-    if (!initialState) {
-      this.addRandomTile();
-      this.addRandomTile();
-    }
+    this.board = initialState ? this.cloneBoard(initialState) : this.createEmptyBoard();
   }
 
   createEmptyBoard() {
@@ -39,6 +32,10 @@ class Game {
   start() {
     if (this.status === 'idle') {
       this.status = 'playing';
+      if (this.isBoardEmpty()) {
+        this.addRandomTile();
+        this.addRandomTile();
+      }
     }
   }
 
@@ -48,6 +45,17 @@ class Game {
     this.board = this.createEmptyBoard();
     this.addRandomTile();
     this.addRandomTile();
+  }
+
+  isBoardEmpty() {
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        if (this.board[i][j] !== 0) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   moveLeft() {
