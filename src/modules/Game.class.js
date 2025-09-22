@@ -71,18 +71,15 @@ class Game {
   }
 
   makeMove(transformFn) {
-    let moved = false;
+    const oldBoard = JSON.stringify(this.board);
 
     for (let i = 0; i < this.size; i++) {
-      const newRow = transformFn(this.board[i]);
-
-      if (newRow.toString() !== this.board[i].toString()) {
-        moved = true;
-        this.board[i] = newRow;
-      }
+      this.board[i] = transformFn(this.board[i]);
     }
 
-    if (moved) {
+    const newBoard = JSON.stringify(this.board);
+
+    if (newBoard !== oldBoard) {
       this.addRandomTile();
       this.checkGameStatus();
     }
